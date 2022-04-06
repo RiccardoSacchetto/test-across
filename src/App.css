@@ -1,38 +1,346 @@
-.App {
+/* CSS variables */
+
+:root {
+  --white: #fff;
+  --black: #000;
+  --linearGreenBlue: linear-gradient(to right, #449BF3, #6CD15F);
+  --accentYellow: #F9D646;
+  --lightGrey: #9E9E9E;
+  --grey: #394960;
+  --backgroundBlue: #142A53;
+  --lightBlue: #2F4E83;
+  --accentGreen: #63C482;
+  --backgroundBlueSecondary: #357AC4;
+}
+
+/* === Typography ===*/
+
+* {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+body, a {
+  color: var(--white);
+}
+
+h1 {
+  font-size: 1.5rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.link, 
+.user-container {
+  color: var(--white);
+  text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.search-container * {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.search-container input::placeholder {
+  color: var(--lightGrey)
+}
+
+.history-time {
+  font-size: 0.625rem;
+  font-weight: 500;
+}
+
+.delete-forever-container * {
+  font-weight: 500;
+}
+
+/* === Layout === */
+
+/* Common */
+
+body {
+  max-width: 100vw;
+  background: #071E41; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #081220, #071E41, #071C39) no-repeat center center fixed; /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #081220, #071E41, #071C39) no-repeat center center fixed; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+main {
+  width: 85%;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 1.5rem;
+}
+
+.link-container {
+  margin: 0 auto;
+  padding: 0;
+  border-bottom: 1px solid var(--grey) ;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+@media screen and (min-width: 992px) {
+  .link-container {
+    width: 95%;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.link {
+  padding: 0.5rem 1.75rem;
+  background-color: var(--backgroundBlue);
+  border-radius: 0.5rem 0.5rem 0 0;
 }
+
+.link-active {
+  color: var(--black);
+  background-color: var(--accentYellow);
+}
+
+.search-container,
+.history-container {
+  max-width: 440px;
+}
+
+/* User container common */
+
+.user-container {
+  outline: none;
+  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.img-login-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-img {
+  width: 40px;
+  height: auto;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.user-login {
+  justify-self: left;
+}
+
+/* Search page */
+
+.search-container {
+  margin: 3rem auto 0;
+}
+
+.component-container-users-home {
+  margin-top: 3rem;
+}
+
+.user-container-home {
+  background-color: var(--backgroundBlue);
+  padding: 0.5rem 1.5rem 0.5rem 1rem;
+  border: 2px solid var(--backgroundBlue);
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+.arrow-icon {
+  justify-self: flex-end;
+  color: var(--lightBlue);
+}
+
+.user-container-home:active,
+.user-container-home:hover {
+  outline: none;
+  background: 
+    linear-gradient(var(--backgroundBlue), var(--backgroundBlue)) padding-box,
+    var(--linearGreenBlue) border-box;
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+}
+
+.user-container-home:active > .arrow-icon,
+.user-container-home:hover > .arrow-icon {
+  color: var(--accentGreen);
+}
+
+.search-bar-container {
+  width: 100%;
+  height: 3rem;
+  margin-top: 3rem;
+}
+
+.search-bar-container form,
+.search-bar-container input {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  background-color: var(--white); 
+}
+
+.search-bar-container form {
+  position: relative;
+}
+
+.search-bar-container input {
+  outline: none;
+  border: none;
+  padding: 1rem;
+}
+
+.search-bar-container button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  color: var(--lightGrey);
+  background-color: var(--white);
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+/* Skeleton */
+
+@keyframes skeletonAnimation {
+  from {opacity: 0.5;}
+  to {opacity: 1;}
+}
+
+.skeleton-container {
+  animation-name: skeletonAnimation;
+  animation-duration: 0.4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  margin-top: 3rem;
+}
+
+.skeleton-line {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background-color: var(--grey);
+  padding: 0.5rem 1.5rem 0.5rem 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  height: 65px;
+}
+
+.skeleton-img {
+  background-color: var(--lightGrey);
+  width: 40px;
+  height: 40px;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.skeleton-name {
+  background-color: var(--lightGrey);
+  width: 70%;
+  height: 0.5rem;
+  border-radius: 0.15rem;
+}
+
+/* History page */
+
+.history-container {
+  margin: 5rem auto 0
+}
+
+.component-container-users-history {
+  border-top: 1px solid var(--grey);
+  padding: 1rem 1.5rem;
+}
+
+.user-container-history {
+  margin: 0.15rem 0;
+}
+
+.user-container-history> .img-login-container > .user-login {
+  border: 2px solid var(--backgroundBlue);
+}
+
+.user-container-history:active > .img-login-container > .user-login,
+.user-container-history:hover > .img-login-container > .user-login {
+  border-bottom: 2px solid var(--accentGreen);
+}
+
+.history-element-container {
+  background-color: var(--backgroundBlue);
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+.history-key-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-toggle-container {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-right: 1px solid var(--grey);
+  padding: 0 1rem;
+}
+
+.history-key-container button {
+  height: 100%;
+  width: 5rem;
+  background-color: var(--backgroundBlue);
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.delete-icon {
+  color: var(--white);
+}
+
+.history-time {
+  background-color: var(--backgroundBlueSecondary);
+  border-radius: 0.35rem;
+  padding: 0.05rem 0.5rem;
+  margin: 0.75rem 0 0.25rem;
+}
+.history-key {
+  margin: 0.35rem 0 0.75rem;
+}
+
+.delete-forever-container {
+  margin: 2rem 0;
+  padding: 0 0.75rem;
+  width: 168px;
+  background-color: var(--grey);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.delete-forever-icon,
+.delete-forever-container p {
+  margin: 0.5rem 0;
+}
+
