@@ -240,7 +240,7 @@ h1 {
   padding: 0.5rem 1.5rem 0.5rem 1rem;
   border-radius: 0.5rem;
   margin: 1rem 0;
-  height: 65px;
+  height: 60px;
 }
 
 .skeleton-img {
@@ -343,4 +343,3 @@ h1 {
 .delete-forever-container p {
   margin: 0.5rem 0;
 }
-

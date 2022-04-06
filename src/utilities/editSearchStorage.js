@@ -1,3 +1,4 @@
+/* Function to keep the storage of the searches to 10 results adding the last one in the beginning */
 export default function editSearchStorage(user, responseItem, dateTime) {
     if(localStorage.getItem("historySearch") === null) {
         localStorage.setItem("historySearch", JSON.stringify([]))

@@ -1,7 +1,7 @@
 import {useState} from "react";
 import ContainerUsers from "./ContainerUsers";
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import getCurrentDateTime from "../utilities/getTime";
+import getCurrentDateTime from "../utilities/getCurrentDateTime";
 import editSearchStorage from "../utilities/editSearchStorage"
 import Skeleton from "./Skeleton";
 
@@ -12,7 +12,6 @@ function Home() {
     const [isResponse, setIsResponse] = useState(false)
     const [users, setUsers] = useState([])
 
-    // localStorage.removeItem("historySearch")
     async function searchGitHubUsers(key) {
         const response = await (await fetch(`https://api.github.com/search/users?q=${key}`)).json()
         const responseItems = response.items
@@ -21,14 +20,12 @@ function Home() {
         setIsLoading(false)
         setIsResponse(true)
     }
-
-    // Handling input and submitting the form
-
+    
+    /* Functions to handle the input and submitting the form */
     function handleSearchChange(event) {
         const {value} = event.target
         setSearchInput(value) 
     }
-
     function handleSearchSubmit(event) {
         event.preventDefault()
         if(searchInput.trim() !== "") {

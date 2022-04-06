@@ -1,5 +1,4 @@
 import {Link} from "react-router-dom"
-import Skeleton from "./Skeleton"
 
 function MainContainer({active, children}) {
     return (

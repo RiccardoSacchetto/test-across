@@ -4,8 +4,7 @@ function ContainerUsers({users, page}) {
 
     const usersComponent = users.map((user) => 
         (
-            <a 
-                href={user.html_url}
+            <a  href={user.html_url}
                 target="_blank"
                 className={page === "home" ? 
                     "user-container user-container-home"
@@ -27,7 +26,7 @@ function ContainerUsers({users, page}) {
                             : 
                             "component-container-users-history"}>
             {
-                usersComponent.length > 0 
+                usersComponent.length !== 0 
                 ? 
                 usersComponent
                 : 

@@ -1,3 +1,4 @@
+/* Function to get the date and time and return the string in the format I decide to use in the UI */
 export default function getCurrentDateTime() {
     const d = new Date(); 
     function getMonthString(month) {

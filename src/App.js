@@ -4,7 +4,6 @@ import MainContainer from "./components/MainContainer"
 import Home from "./components/Home"
 import History from "./components/History"
 
-
 function App() {
 
   return (

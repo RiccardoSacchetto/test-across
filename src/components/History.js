@@ -11,13 +11,15 @@ function History() {
     const [showUsersSearch, setShowUsersSearch] = useState(new Array(10).fill(false))
 
     useEffect(() => {
-        if(localStorage.getItem("historySearch") === null) {
+        if(localStorage.getItem("historySearch") === null) { // Setting localStorage to an empty string to prevent problems with undefined
             localStorage.setItem("historySearch", JSON.stringify([]))
         }
         setHistorySearch(JSON.parse(localStorage.getItem("historySearch")))
     }, [])
 
-    function toggleShowUsersSearch(index) {
+    /*  Function to change the historySearch state to show only one list of users or close the one clicked
+        it is also used when removeItemSearchStorage is called to set false that element in the state */
+    function toggleShowUsersSearch(index) { 
         setShowUsersSearch(showUsersSearch.map((element, i) => {
                 if(i === index) {
                     return !element    
