@@ -6,13 +6,14 @@ function ContainerUsers({users, page}) {
         (
             <a  href={user.html_url}
                 target="_blank"
+                rel="noreferrer"
                 className={page === "home" ? 
                     "user-container user-container-home"
                     :
                     "user-container user-container-history"} 
                 key={user.id}>
                 <div className="img-login-container">
-                    <img className="user-img" src={user.avatar_url}/>
+                    <img className="user-img" alt="GitHub profile" src={user.avatar_url}/>
                     <p className="user-login">{user.login}</p>
                 </div>
                 {page === "home"  && <OpenInNewOutlinedIcon className="arrow-icon"/>}
