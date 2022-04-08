@@ -76,12 +76,14 @@ function History() {
 
     return (
         <div className="history-container">
-             {historySearch.length !=0 && searchesComponent}
-            {historySearch.length != 0 &&
+            {searchesComponent}
+            {historySearch.length != 0 ?
                 <div className="delete-forever-container" onClick={deleteSearchStorage}>
                     <p>Clear history</p>
                     <DeleteForeverOutlinedIcon className="delete-forever-icon"/>
                 </div>
+                :
+                <h3>Search history empty</h3>
             }   
         </div>
     )
