@@ -27,6 +27,8 @@ export default function getCurrentDateTime() {
                 return "November"
             case 11:
                 return "December"
+            default:
+                return ""
         }
     }
     return `${d.getDate()} ${getMonthString(d.getMonth())} - ${d.getHours()}:${d.getMinutes()}`
